@@ -1,0 +1,15 @@
+H:\Softuni\C#\Animals\Animals\bin\Debug\net6.0\Animals.exe
+H:\Softuni\C#\Animals\Animals\bin\Debug\net6.0\Animals.deps.json
+H:\Softuni\C#\Animals\Animals\bin\Debug\net6.0\Animals.runtimeconfig.json
+H:\Softuni\C#\Animals\Animals\bin\Debug\net6.0\Animals.dll
+H:\Softuni\C#\Animals\Animals\bin\Debug\net6.0\Animals.pdb
+H:\Softuni\C#\Animals\Animals\obj\Debug\net6.0\Animals.csproj.AssemblyReference.cache
+H:\Softuni\C#\Animals\Animals\obj\Debug\net6.0\Animals.GeneratedMSBuildEditorConfig.editorconfig
+H:\Softuni\C#\Animals\Animals\obj\Debug\net6.0\Animals.AssemblyInfoInputs.cache
+H:\Softuni\C#\Animals\Animals\obj\Debug\net6.0\Animals.AssemblyInfo.cs
+H:\Softuni\C#\Animals\Animals\obj\Debug\net6.0\Animals.csproj.CoreCompileInputs.cache
+H:\Softuni\C#\Animals\Animals\obj\Debug\net6.0\Animals.dll
+H:\Softuni\C#\Animals\Animals\obj\Debug\net6.0\refint\Animals.dll
+H:\Softuni\C#\Animals\Animals\obj\Debug\net6.0\Animals.pdb
+H:\Softuni\C#\Animals\Animals\obj\Debug\net6.0\Animals.genruntimeconfig.cache
+H:\Softuni\C#\Animals\Animals\obj\Debug\net6.0\ref\Animals.dll
