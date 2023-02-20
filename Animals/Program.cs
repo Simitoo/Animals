@@ -17,10 +17,8 @@
 using Animals;
 
 
-
-
 Console.BufferHeight = Console.WindowHeight;
-
+Console.BufferWidth = Console.WindowWidth;
 
 
 Positions[] positions = new Positions[]
@@ -39,7 +37,7 @@ Random random = new Random();
 List<Positions> predators = new List<Positions>();
 List<Positions> herbivores = new List<Positions>();
 
-for (int i = 0; i <= 10; i++)
+for (int i = 0; i < 10; i++)
 {
     predators.Add(new Positions(random.Next(0, Console.WindowWidth), random.Next(0, Console.WindowHeight)));
     herbivores.Add(new Positions(random.Next(0, Console.WindowWidth), random.Next(0, Console.WindowHeight)));
@@ -49,12 +47,6 @@ foreach (Positions pos in predators)
 {
     Console.SetCursorPosition(pos.Row, pos.Col);
     Console.Write("X");
-}
-
-foreach (Positions pos in herbivores)
-{
-    Console.SetCursorPosition(pos.Row, pos.Col);
-    Console.Write("O");
 }
 
 while (true)
@@ -82,27 +74,71 @@ while (true)
         }
 
         nextMove = positions[currPosition];
+
+        Positions newPredatorsPos = RangeSetter(predators[i].Row + nextMove.Row, predators[i].Col + nextMove.Col);
+        Positions newHerbivoresPos = RangeSetter(herbivores[i].Row + nextMove.Row, herbivores[i].Col + nextMove.Col);
+
+        if (predators.Contains(newPredatorsPos))
+        {
+
+        }
+        else
+        {
+            predators.Remove(predators[i]);
+            predators.Add(newPredatorsPos);
+        }
+
+        
+        herbivores.Remove(herbivores[i]);
+        herbivores.Add(newHerbivoresPos);
+
+        if (herbivores.Contains(newPredatorsPos))
+        {
+            herbivores.Remove(newPredatorsPos);
+        }
+      
     }
 
-    //foreach (Positions pos in predators)
-    //{
-    //    Positions newPredators = new Positions(pos.Row + nextMove.Row, pos.Col + nextMove.Row);
-    //    predators.Remove(pos);
-    //    predators.Add(newPredators);
-    //}
+    Console.Clear();
 
-    //Console.Clear();
+    foreach (Positions pos in predators)
+    {
+        Console.SetCursorPosition(pos.Row, pos.Col);
+        Console.Write("X");
+    }
 
-    //foreach (Positions pos in predators)
-    //{
-    //    Console.SetCursorPosition(pos.Row, pos.Col);
-    //    Console.Write("X");
-    //}
+    foreach (Positions pos in herbivores)
+    {
+        Console.SetCursorPosition(pos.Row, pos.Col);
+        Console.Write("O");
+    }
 
-    //Thread.Sleep(100);
-
-
+    Thread.Sleep(500);
+}
 
 
+Positions RangeSetter(int nextRow, int nextCol)
+{
+    if (nextCol < 0)
+    {
+        nextCol = 0;
+    }
+    else if (nextCol >= Console.WindowHeight)
+    {
+        nextCol = Console.WindowHeight - 1;
+    }
+
+    if (nextRow < 0)
+    {
+        nextRow = 0;
+    }
+    else if (nextRow >= Console.WindowWidth)
+    {
+        nextRow = Console.WindowWidth - 1;
+    }
+
+    Positions newPosition = new Positions(nextRow, nextCol);
+
+    return newPosition;
 
 }
