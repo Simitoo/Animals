@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Softuni\\C#\\Animals\\Animals\\Animals.csproj",
+      "projectUniqueName": "D:\\Fork\\Animals\\Animals\\Animals.csproj",
       "projectName": "Animals",
-      "projectPath": "H:\\Softuni\\C#\\Animals\\Animals\\Animals.csproj",
+      "projectPath": "D:\\Fork\\Animals\\Animals\\Animals.csproj",
       "packagesPath": "C:\\Users\\Moni\\.nuget\\packages\\",
-      "outputPath": "H:\\Softuni\\C#\\Animals\\Animals\\obj\\",
+      "outputPath": "D:\\Fork\\Animals\\Animals\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Moni\\AppData\\Roaming\\NuGet\\NuGet.Config",
