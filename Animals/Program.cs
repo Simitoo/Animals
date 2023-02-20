@@ -37,7 +37,7 @@ Random random = new Random();
 List<Positions> predators = new List<Positions>();
 List<Positions> herbivores = new List<Positions>();
 
-for (int i = 0; i < 10; i++)
+for (int i = 0; i < 30; i++)
 {
     predators.Add(new Positions(random.Next(0, Console.WindowWidth), random.Next(0, Console.WindowHeight)));
     herbivores.Add(new Positions(random.Next(0, Console.WindowWidth), random.Next(0, Console.WindowHeight)));
@@ -49,7 +49,7 @@ foreach (Positions pos in predators)
     Console.Write("X");
 }
 
-while (true)
+while (herbivores.Count != 0)
 {
     Positions nextMove;
 
@@ -76,27 +76,14 @@ while (true)
         nextMove = positions[currPosition];
 
         Positions newPredatorsPos = RangeSetter(predators[i].Row + nextMove.Row, predators[i].Col + nextMove.Col);
-        Positions newHerbivoresPos = RangeSetter(herbivores[i].Row + nextMove.Row, herbivores[i].Col + nextMove.Col);
 
-        if (predators.Contains(newPredatorsPos))
+        predators.Remove(predators[i]);
+        predators.Add(newPredatorsPos);
+
+        if (predators[i] == herbivores[i])
         {
-
+            herbivores.RemoveAt(i);
         }
-        else
-        {
-            predators.Remove(predators[i]);
-            predators.Add(newPredatorsPos);
-        }
-
-        
-        herbivores.Remove(herbivores[i]);
-        herbivores.Add(newHerbivoresPos);
-
-        if (herbivores.Contains(newPredatorsPos))
-        {
-            herbivores.Remove(newPredatorsPos);
-        }
-      
     }
 
     Console.Clear();
@@ -113,7 +100,7 @@ while (true)
         Console.Write("O");
     }
 
-    Thread.Sleep(500);
+    Thread.Sleep(300);
 }
 
 
