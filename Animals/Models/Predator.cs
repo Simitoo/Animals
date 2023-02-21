@@ -12,7 +12,12 @@ namespace Animals.Models
         {
         }
 
-        public void Feeding(List<Position> predators, List<Position> herbivores)
+        public override void Eat()
+        {
+           
+        }
+
+        public void Feeding(List<Position> predators, List<Position> herbivores) // polymorphism ??????????????
         {
             List<Position> eatenAnimals = new List<Position>();
 

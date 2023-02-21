@@ -17,43 +17,31 @@ namespace Animals
         {
             this.position = position;
             this.predators = new List<Position>();
-            this.herbivores= new List<Position>();
+            this.herbivores = new List<Position>();
         }
 
         public List<Position> Predators => this.predators;
 
         public List<Position> Herbivores => this.herbivores;
 
-        public virtual void Move()
-        {       
-            Position nextMove = new Position(0, 0);
+        public Cell CurrentCell { get; private set; }
 
-            for (int i = 0; i < predators.Count; i++)
-            {
-                int directions = Random.Shared.Next(0, 4);
+        public Position CurrentPosition => CurrentCell.Position;
 
-                switch (directions)
-                {
-                    case 0:
-                        nextMove = new Position(-1, 0);
-                        break;
-                    case 1:
-                        nextMove = new Position(1, 0);
-                        break;
-                    case 2:
-                        nextMove = new Position(0, -1);
-                        break;
-                    case 3:
-                        nextMove = new Position(0, 1);
-                        break;
-                }
-             
-                Position newPredatorsPos = RangeSetter(predators[i].Row + nextMove.Row, predators[i].Col + nextMove.Col);
+        public virtual Position Move()
+        {
+            var direction = Direction.Random();
+            var nextMove = CurrentPosition.To(direction);
 
-                predators.Remove(predators[i]);
-                predators.Add(newPredatorsPos);
-            }
+            return nextMove;
         }
+
+        public virtual void Move(Cell cell)
+        {
+            CurrentCell = cell;
+        }
+
+        public abstract void Eat();
 
         private Position RangeSetter(int nextRow, int nextCol)
         {
