@@ -20,6 +20,8 @@ using Animals;
 Console.BufferHeight = Console.WindowHeight;
 Console.BufferWidth = Console.WindowWidth;
 
+//Console.SetWindowSize(60, 50);
+
 
 Positions[] positions = new Positions[]
 {
@@ -30,14 +32,15 @@ Positions[] positions = new Positions[]
 };
 
 int currPosition = 0;
-
+int animalsCount = 20;
+bool isEaten = false;
 
 Random random = new Random();
 
 List<Positions> predators = new List<Positions>();
 List<Positions> herbivores = new List<Positions>();
 
-for (int i = 0; i < 30; i++)
+for (int i = 0; i < animalsCount; i++)
 {
     predators.Add(new Positions(random.Next(0, Console.WindowWidth), random.Next(0, Console.WindowHeight)));
     herbivores.Add(new Positions(random.Next(0, Console.WindowWidth), random.Next(0, Console.WindowHeight)));
@@ -79,28 +82,43 @@ while (herbivores.Count != 0)
 
         predators.Remove(predators[i]);
         predators.Add(newPredatorsPos);
+    }
 
-        if (predators[i] == herbivores[i])
+    List<Positions> eatenAnimals = new List<Positions>();
+
+    for (int i = 0; i < predators.Count; i++)
+    {
+        for (int j = 0; j < herbivores.Count; j++)
         {
-            herbivores.RemoveAt(i);
+            if (predators[i].Row == herbivores[j].Row && predators[i].Col == herbivores[j].Col)
+            {
+                isEaten = true;
+                eatenAnimals.Add(herbivores[j]);
+            }
         }
+    }
+
+    for (int i = 0; i < eatenAnimals.Count; i++)
+    {
+        herbivores.Remove(eatenAnimals[i]);
     }
 
     Console.Clear();
 
-    foreach (Positions pos in predators)
+    foreach (Positions posH in herbivores)
     {
-        Console.SetCursorPosition(pos.Row, pos.Col);
-        Console.Write("X");
-    }
-
-    foreach (Positions pos in herbivores)
-    {
-        Console.SetCursorPosition(pos.Row, pos.Col);
+        Console.SetCursorPosition(posH.Row, posH.Col);
         Console.Write("O");
     }
 
-    Thread.Sleep(300);
+    foreach (Positions posP in predators)
+    {
+        Console.SetCursorPosition(posP.Row, posP.Col);
+        Console.Write("X");
+    }
+
+
+    Thread.Sleep(100);
 }
 
 
