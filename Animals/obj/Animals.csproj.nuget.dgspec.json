@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Fork\\Animals\\Animals\\Animals.csproj": {}
+    "C:\\Users\\elder\\Animals\\Animals\\Animals.csproj": {}
   },
   "projects": {
-    "D:\\Fork\\Animals\\Animals\\Animals.csproj": {
+    "C:\\Users\\elder\\Animals\\Animals\\Animals.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Fork\\Animals\\Animals\\Animals.csproj",
+        "projectUniqueName": "C:\\Users\\elder\\Animals\\Animals\\Animals.csproj",
         "projectName": "Animals",
-        "projectPath": "D:\\Fork\\Animals\\Animals\\Animals.csproj",
-        "packagesPath": "C:\\Users\\Moni\\.nuget\\packages\\",
-        "outputPath": "D:\\Fork\\Animals\\Animals\\obj\\",
+        "projectPath": "C:\\Users\\elder\\Animals\\Animals\\Animals.csproj",
+        "packagesPath": "C:\\Users\\elder\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\elder\\Animals\\Animals\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Moni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\elder\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

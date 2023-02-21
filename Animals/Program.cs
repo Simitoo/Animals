@@ -11,139 +11,38 @@
 //moving stop when there isn't left any O
 
 
-
-
-
 using Animals;
+using Animals.Models;
 
 
-Console.BufferHeight = Console.WindowHeight;
-Console.BufferWidth = Console.WindowWidth;
-
-//Console.SetWindowSize(60, 50);
-
-
-Positions[] positions = new Positions[]
-{
-    new Positions(-1, 0), // u
-    new Positions(1, 0), // d
-    new Positions(0, -1), // l 
-    new Positions(0, 1), // r   
-};
-
-int currPosition = 0;
 int animalsCount = 20;
-bool isEaten = false;
 
-Random random = new Random();
+Area area = new Area();
 
-List<Positions> predators = new List<Positions>();
-List<Positions> herbivores = new List<Positions>();
+Position posP = new Position(Random.Shared.Next(0, Console.WindowWidth), Random.Shared.Next(0, Console.WindowHeight));
+Predator predators = new Predator(posP);
+
+Position posH = new Position(Random.Shared.Next(0, Console.WindowWidth), Random.Shared.Next(0, Console.WindowHeight));
+Herbivore herbivores = new Herbivore(posH);
 
 for (int i = 0; i < animalsCount; i++)
 {
-    predators.Add(new Positions(random.Next(0, Console.WindowWidth), random.Next(0, Console.WindowHeight)));
-    herbivores.Add(new Positions(random.Next(0, Console.WindowWidth), random.Next(0, Console.WindowHeight)));
+    predators.Predators.Add(new Position(Random.Shared.Next(0, Console.WindowWidth), Random.Shared.Next(0, Console.WindowHeight)));
+    herbivores.Herbivores.Add(new Position(Random.Shared.Next(0, Console.WindowWidth), Random.Shared.Next(0, Console.WindowHeight)));
 }
 
-foreach (Positions pos in predators)
+predators.SetStartPosition();
+
+while (herbivores.Herbivores.Count != 0)
 {
-    Console.SetCursorPosition(pos.Row, pos.Col);
-    Console.Write("X");
-}
-
-while (herbivores.Count != 0)
-{
-    Positions nextMove;
-
-    for (int i = 0; i < predators.Count; i++)
-    {
-        int directions = random.Next(0, 4);
-
-        switch (directions)
-        {
-            case 0:
-                currPosition = 0;
-                break;
-            case 1:
-                currPosition = 1;
-                break;
-            case 2:
-                currPosition = 2;
-                break;
-            case 3:
-                currPosition = 3;
-                break;
-        }
-
-        nextMove = positions[currPosition];
-
-        Positions newPredatorsPos = RangeSetter(predators[i].Row + nextMove.Row, predators[i].Col + nextMove.Col);
-
-        predators.Remove(predators[i]);
-        predators.Add(newPredatorsPos);
-    }
-
-    List<Positions> eatenAnimals = new List<Positions>();
-
-    for (int i = 0; i < predators.Count; i++)
-    {
-        for (int j = 0; j < herbivores.Count; j++)
-        {
-            if (predators[i].Row == herbivores[j].Row && predators[i].Col == herbivores[j].Col)
-            {
-                isEaten = true;
-                eatenAnimals.Add(herbivores[j]);
-            }
-        }
-    }
-
-    for (int i = 0; i < eatenAnimals.Count; i++)
-    {
-        herbivores.Remove(eatenAnimals[i]);
-    }
+    predators.Move();
+    predators.Feeding(predators.Predators, herbivores.Herbivores);
 
     Console.Clear();
 
-    foreach (Positions posH in herbivores)
-    {
-        Console.SetCursorPosition(posH.Row, posH.Col);
-        Console.Write("O");
-    }
-
-    foreach (Positions posP in predators)
-    {
-        Console.SetCursorPosition(posP.Row, posP.Col);
-        Console.Write("X");
-    }
-
+    herbivores.Print(herbivores.Herbivores);
+    predators.Print(predators.Predators);
 
     Thread.Sleep(100);
 }
 
-
-Positions RangeSetter(int nextRow, int nextCol)
-{
-    if (nextCol < 0)
-    {
-        nextCol = 0;
-    }
-    else if (nextCol >= Console.WindowHeight)
-    {
-        nextCol = Console.WindowHeight - 1;
-    }
-
-    if (nextRow < 0)
-    {
-        nextRow = 0;
-    }
-    else if (nextRow >= Console.WindowWidth)
-    {
-        nextRow = Console.WindowWidth - 1;
-    }
-
-    Positions newPosition = new Positions(nextRow, nextCol);
-
-    return newPosition;
-
-}
