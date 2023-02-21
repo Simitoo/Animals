@@ -12,6 +12,10 @@ namespace Animals.Models
         {
         }
 
+        public override void Eat()
+        {
+        }
+
         public override void Print(List<Position> list)
         {
             foreach (Position pos in list)

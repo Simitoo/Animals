@@ -14,7 +14,6 @@
 using Animals;
 using Animals.Models;
 
-
 int animalsCount = 20;
 
 Area area = new Area();
