@@ -12,8 +12,8 @@ namespace Animals.Models
     {
         public Position(int row, int col)
         {
-            //if (row < 0) throw new ArgumentOutOfRangeException(nameof(row));
-            //if (col < 0) throw new ArgumentOutOfRangeException(nameof(col));
+            if (row < 0) throw new ArgumentOutOfRangeException(nameof(row));
+            if (col < 0) throw new ArgumentOutOfRangeException(nameof(col));
 
             Row = row;
             Col = col;

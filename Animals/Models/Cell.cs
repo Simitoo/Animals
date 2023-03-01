@@ -1,4 +1,6 @@
-﻿namespace Animals.Models
+﻿using Animals.Models.Animals;
+
+namespace Animals.Models
 {
     public class Cell
     {
@@ -15,7 +17,7 @@
 
         public void Visit(Animal animal)
         {
-            if (animals.Contains(animal)) throw new InvalidOperationException($"Cell with coordinates ({Position.Row}:{Position.Col}) already conntains annimal.");
+            if (animals.Contains(animal)) throw new InvalidOperationException($"Cell with coordinates ({Position.Row}:{Position.Col}) already conntains animal.");
 
             animals.Add(animal);
             animal.Move(this);
