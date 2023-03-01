@@ -1,4 +1,6 @@
-﻿namespace Animals.Models
+﻿using Animals.Models.Animals;
+
+namespace Animals.Models
 {
     public class World
     {
@@ -37,8 +39,9 @@
                         continue;
 
                     newCell.Visit(animal);
+                    animal.Print();
                 }
             }
-        }
+        }      
     }
 }

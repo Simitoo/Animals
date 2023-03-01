@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Animals.Models
+namespace Animals.Models.Animals
 {
     public class Herbivore : Animal
     {
@@ -16,13 +16,9 @@ namespace Animals.Models
         {
         }
 
-        public override void Print(List<Position> list)
+        public override void Print()
         {
-            foreach (Position pos in list)
-            {
-                Console.SetCursorPosition(pos.Row, pos.Col);
-                Console.Write("O");
-            }
+            Console.Write("O");
         }
     }
 }
